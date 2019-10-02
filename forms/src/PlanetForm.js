@@ -1,16 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import "./planetForm.css";
 
-export default class PlanetForm extends Component {
+export default class PlanetForm extends React.Component {
   constructor() {
     super();
 
+    console.log("constructor", document.querySelector("#test"));
+
     this.state = {
-      name: "",
-      lightYears: 0,
-      planetMass: 0,
-      stellarMagnitude: 0,
-      discoveryDate: 0
+      name: "HD 114762 b",
+      lightYears: 131,
+      planetMass: 10.69,
+      stellarMagnitude: 7301,
+      discoveryDate: 1989
     };
   }
 
@@ -39,9 +41,24 @@ export default class PlanetForm extends Component {
     this.setState(newState);
   }
 
+  sendState(e) {
+    e.preventDefault();
+    this.props.sendStateFromApp(this.state);
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount", document.querySelector("#test"));
+    document.querySelector("#test").style.backgroundColor = "red";
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount");
+    // clearIntervals, removeEventListeners.... (memory optimisation)
+  }
+
   render() {
     return (
-      <form className="planet-form">
+      <form className="planet-form" id="test">
         <h1>
           {this.state.name} ({this.state.lightYears})
         </h1>
@@ -81,9 +98,9 @@ export default class PlanetForm extends Component {
           onChange={e => this.updateFormData(e, "discoveryDate", "number")}
         ></input>
 
-        <button>Add new planet</button>
+        <button onClick={e => this.sendState(e)}>Add new planet</button>
 
-        {JSON.stringify(this.state)}
+        {/* {JSON.stringify(this.state)} */}
       </form>
     );
   }
