@@ -1,0 +1,12 @@
+.planet-form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.planet-form button {
+    /* margin-top: 25px; */
+}
+.planet-form input {
+    margin-bottom: 15px;
+}
