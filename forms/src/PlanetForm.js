@@ -8,27 +8,13 @@ export default class PlanetForm extends React.Component {
     console.log("constructor", document.querySelector("#test"));
 
     this.state = {
-      name: "HD 114762 b",
-      lightYears: 131,
-      planetMass: 10.69,
-      stellarMagnitude: 7301,
-      discoveryDate: 1989
+      name: "",
+      lightYears: 0,
+      planetMass: 0,
+      stellarMagnitude: 0,
+      discoveryDate: 0
     };
   }
-
-  //   setPlanetName(e) {
-  //     this.setState({
-  //       ...this.state,
-  //       name: e.target.value
-  //     });
-  //   }
-
-  //   setLightYears(e) {
-  // this.setState({
-  //   ...this.state,
-  //   lightYears: e.target.value
-  // });
-  //   }
 
   // onChange={e => this.updateFormData(e, "name")}
   updateFormData(e, field, fieldType) {
@@ -47,21 +33,26 @@ export default class PlanetForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount", document.querySelector("#test"));
-    document.querySelector("#test").style.backgroundColor = "red";
+    console.log("componentDidMount");
+
+    // DOM manipulation once the DOM is ready
+    document.querySelector("#test input").style.backgroundColor = "#f3f8fc";
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
+    alert("planet form componentWillUnmount called!");
     // clearIntervals, removeEventListeners.... (memory optimisation)
   }
 
   render() {
     return (
       <form className="planet-form" id="test">
-        <h1>
-          {this.state.name} ({this.state.lightYears})
-        </h1>
+        {this.state.name && (
+          <h1>
+            {this.state.name} ({this.state.lightYears})
+          </h1>
+        )}
+
         <input
           type="text"
           name="name"

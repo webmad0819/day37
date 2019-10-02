@@ -4,9 +4,11 @@
     width: 200px;
 }
 
-.planet-form button {
-    /* margin-top: 25px; */
+.planet-form h1 {
+    transition: all 0.5s;
+    margin-bottom: 25px;
 }
+
 .planet-form input {
     margin-bottom: 15px;
 }
